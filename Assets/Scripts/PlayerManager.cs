@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(startSwpanEnemies());
+       // StartCoroutine(startSwpanEnemies());
     }
 
     public void Update()
