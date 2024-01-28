@@ -41,6 +41,7 @@ public class PlayerCombat : MonoBehaviour
         StartCombat(other);
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private void Attack(Collider2D other)
     {
         Debug.Log(other.gameObject.tag);

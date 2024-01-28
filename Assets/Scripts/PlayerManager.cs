@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-       // StartCoroutine(startSwpanEnemies());
+       StartCoroutine(startSwpanEnemies());
     }
 
     public void Update()
@@ -42,9 +42,9 @@ public class PlayerManager : MonoBehaviour
             progressBar.localScale = new Vector2(0,0);
         }
 
-        if (_spawning == true)
+        if (_spawning)
         {
-            value += 0.03f;
+            value += 0.01f;
             progressBar.localScale = new Vector2(value,1 );
         }
     }
@@ -62,9 +62,12 @@ public class PlayerManager : MonoBehaviour
        
     }
 
-    private void startSwpanEnemies()
+    private IEnumerator startSwpanEnemies()
     {
-        
+        yield return new WaitForSeconds(3f);
+        var newEnemy = Instantiate(playerPrefabEnemy, spawnerEnemy.position, Quaternion.identity, containerEnemy);
+        newEnemy.Data = playerData[3];
+        StartCoroutine(startSwpanEnemies());
     }
 
     private void RemovePlayer(Player player)
