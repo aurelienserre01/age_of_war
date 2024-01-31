@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6324235403592818026}
   - component: {fileID: -8754088859078281157}
   - component: {fileID: 5919074100132914038}
+  - component: {fileID: 6788218295753989146}
   - component: {fileID: 5460573454658164170}
   - component: {fileID: -547685136816763635}
   - component: {fileID: 6807076335773967252}
@@ -109,6 +110,19 @@ MonoBehaviour:
   score: 0
   cost: 0
   ally: 0
+--- !u!114 &6788218295753989146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6018973059723069694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976226d7362de834b9a7974be9d5f418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
 --- !u!114 &5460573454658164170
 MonoBehaviour:
   m_ObjectHideFlags: 0

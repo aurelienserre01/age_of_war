@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
         {
             
             _data = value;
-            Debug.Log("set player data" + _data.speed);
             texture = _data.texture;
             _playerMovement.speed = _data.speed;
             _spriteRenderer.sprite = Sprite.Create(_data.texture, new Rect(0.0f, 0.0f, _data.texture.width, _data.texture.height), new Vector2(0.5f, 0.5f), 100.0f);

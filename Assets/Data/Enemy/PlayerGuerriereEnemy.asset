@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texture: {fileID: 2800000, guid: ae04f720b094e9843a5972d39b259313, type: 3}
   speed: -3
-  damage: 3
-  health: 3
+  damage: 10
+  health: 60
   attackPerSec: 3
   score: 3
   cost: 3
-  ally: 1
+  ally: 0

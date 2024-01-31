@@ -9,8 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
 
 
-
-    public float speed = 1f;
+    public float speed = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +29,11 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Warrior_enemy") || other.gameObject.CompareTag("Warrior_allies"))
         {
             _rigidbody2D.velocity = _movement * 0;
-            Debug.Log("Colision");
+            
+        }
+        if ((other.gameObject.CompareTag("Tower_allies") && gameObject.CompareTag("Warrior_enemy")) || (other.gameObject.CompareTag("Tower_enemy") && gameObject.CompareTag("Warrior_allies")))
+        {
+            _rigidbody2D.velocity = _movement * 0; 
         }
     }
 
@@ -39,8 +42,13 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Warrior_enemy") || other.gameObject.CompareTag("Warrior_allies"))
         {
             _rigidbody2D.velocity = _movement * speed;
-            Debug.Log("Colision Exit");
+            
 
+        }
+        
+        if ((other.gameObject.CompareTag("Tower_allies") && gameObject.CompareTag("Warrior_enemy")) || (other.gameObject.CompareTag("Tower_enemy") && gameObject.CompareTag("Warrior_allies")))
+        {
+            _rigidbody2D.velocity = _movement * speed; 
         }
     }
 

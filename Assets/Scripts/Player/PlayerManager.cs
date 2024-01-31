@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -12,14 +14,15 @@ public class PlayerManager : MonoBehaviour
     public List<PlayerData> playerData;
     private List<Player> _players = new List<Player>();
     public Transform containerAlly;
-    public Transform progressBar;
+
+    public Image bar;
 
     public Player playerPrefabEnemy;
     public Transform containerEnemy;
     public Transform spawnerEnemy;
     
     private bool _spawning = false;
-    private float value = 0f;
+    private float _value = 0.5f;
 
     IEnumerator WaitSeconds(int secondes)
     {
@@ -30,7 +33,13 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-       StartCoroutine(startSwpanEnemies());
+        _gameManager = GameManager.Instance;
+    }
+    
+    
+    public void StartGame()
+    {
+        StartCoroutine(startSwpanEnemies());
     }
 
     public void Update()
@@ -38,14 +47,14 @@ public class PlayerManager : MonoBehaviour
         
         if (_spawning == false)
         {
-            value = 0f;
-            progressBar.localScale = new Vector2(0,0);
+            bar.fillAmount = 0;
         }
 
         if (_spawning)
         {
-            value += 0.01f;
-            progressBar.localScale = new Vector2(value,1 );
+            
+            bar.fillAmount += Mathf.Clamp01(Time.deltaTime);
+            Debug.Log(bar.fillAmount);
         }
     }
 
@@ -65,8 +74,19 @@ public class PlayerManager : MonoBehaviour
     private IEnumerator startSwpanEnemies()
     {
         yield return new WaitForSeconds(3f);
+        var data = playerData[5];
+        var numberRandom = UnityEngine.Random.Range(0, 100);
+        if (numberRandom < 25)
+        {
+            data = playerData[3];
+        }
+
+        if ( numberRandom >= 26 && numberRandom < 50)
+        {
+            data = playerData[4];
+        }
         var newEnemy = Instantiate(playerPrefabEnemy, spawnerEnemy.position, Quaternion.identity, containerEnemy);
-        newEnemy.Data = playerData[3];
+        newEnemy.Data = data;
         StartCoroutine(startSwpanEnemies());
     }
 

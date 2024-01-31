@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Warrior_enemy
   - Warrior_allies
+  - Tower_allies
+  - Tower_enemy
   layers:
   - Default
   - TransparentFX
